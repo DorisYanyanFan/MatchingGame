@@ -31,7 +31,7 @@ let timeSec = document.querySelector('#clock');
 let timer = function(){
   let now = new Date().getTime();
   let sec = Math.floor((now  - startTime)/1000);
-  if (startTime !== 'inActive') {
+  if (startTime !== 'inActive')  { /*need change */ 
     timeSec.textContent = 'Timer: ' + sec + ' sec';
   }};
 
