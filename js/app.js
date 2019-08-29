@@ -29,10 +29,12 @@ function shuffle(array) {
 let startTime = 'inActive';
 let timeSec = document.querySelector('#clock');
 let timer = function(){
-  let now = new Date().getTime();
-  let sec = Math.floor((now  - startTime)/1000);
-    timeSec.textContent = 'Timer: ' + sec + ' sec';
-  };
+    let now = new Date().getTime();
+    let sec = Math.floor((now  - startTime)/1000);
+    if (startTime !== 'inActive') {
+        timeSec.textContent = 'Timer: ' + sec + ' sec';
+    }
+};
 
 const refresh = document.querySelector('.restart');
 let allCards = document.querySelectorAll('.card');
