@@ -25,6 +25,18 @@ function shuffle(array) {
     return array;
 }
 
+const shuffleCards = function(){
+    let array = [];
+    for (let i = 0; i < 16; i = i + 1) {
+        array[i] = allCards[i].innerHTML;
+    };
+    shuffle(array);
+    for (let i = 0; i < 16; i = i + 1) {
+        allCards[i].innerHTML = array[i];
+        allCards[i].className = 'card';
+        allCards[i].style.cssText = '';
+    };
+}
 
 let startTime = 'inActive';
 let timeSec = document.querySelector('#clock');
@@ -42,30 +54,21 @@ let allCards = document.querySelectorAll('.card');
 let moves = document.querySelector('.moves');
 // this is the function to restart a game.
 const funcRefresh = function(event){
-  let array = [];
-  for (let i = 0; i < 16; i = i + 1) {
-    array[i] = allCards[i].innerHTML;
-  };
-  shuffle(array);
-  for (let i = 0; i < 16; i = i + 1) {
-      allCards[i].innerHTML = array[i];
-      allCards[i].className = 'card';
-      allCards[i].style.cssText = '';
-  };
+    shuffleCards();
 // this is to reset all the indices to the start.
-  moves.textContent = 0;
-  timeSec.textContent = 'Timer: 0 sec';
-  startTime = 'inActive';
-  starOne.classList.value = 'fa fa-star';
-  starTwo.classList.value = 'fa fa-star';
-  starThree.classList.value = 'fa fa-star';
-  firstChoiceContent = 'start';
-  firstChoice = '';
-  lastRoundOne = document.createElement('div');
-  lastRoundTwo = document.createElement('div');
-  trial = 0;
-  stars = 3;
-  successPair = 0;
+    moves.textContent = 0;
+    timeSec.textContent = 'Timer: 0 sec';
+    startTime = 'inActive';
+    starOne.classList.value = 'fa fa-star';
+    starTwo.classList.value = 'fa fa-star';
+    starThree.classList.value = 'fa fa-star';
+    firstChoiceContent = 'start';
+    firstChoice = '';
+    lastRoundOne = document.createElement('div');
+    lastRoundTwo = document.createElement('div');
+    trial = 0;
+    stars = 3;
+    successPair = 0;
 };
 
 refresh.addEventListener ('click', funcRefresh);
