@@ -50,6 +50,7 @@ const funcRefresh = function(event){
       allCards[i].className = 'card';
       allCards[i].style.cssText = '';
   };
+// this is to reset all the indices to the start.
   moves.textContent = 0;
   timeSec.textContent = 'Timer: 0 sec';
   startTime = 'inActive';
@@ -68,11 +69,15 @@ const funcRefresh = function(event){
 refresh.addEventListener ('click', funcRefresh);
 
 
-
+// firstChoice will be an asigned to the first chosen card when comparing.
+// firstChoiceContent takes record the classList of the first chose card in comparing
 let firstChoiceContent = 'start';
 let firstChoice = '';
+// lastRoundOne will be asigned to the first chosen card in last round comparing. This is used to clear the CSS animation of last round cards.
+// lastRoundTwo will be asigned to the second chosen card in last round comparing. This is used to clear the CSS animation of last round cards.
 let lastRoundOne = document.createElement('div');
 let lastRoundTwo = document.createElement('div');
+// trial is to take record of the times of comparing. stars is the number of stars should be shown. successPair is the number of finished pairs.
 let trial = 0;
 let stars = 3;
 let successPair = 0;
@@ -84,6 +89,7 @@ const starThree = document.querySelector('#star3');
 const test = document.querySelector('.deck');
 const toggleCard = function (event) {event.target.classList.add('open', 'show')};
 const compare = function(event){
+// the very first card been chosen
   if (firstChoiceContent === "start") {
     startTime = new Date().getTime();
     countTime = setInterval(timer, 1000);
@@ -92,13 +98,15 @@ const compare = function(event){
     event.target.style.cssText = 'animation-name: flip; animation-duration: 1.5s;';
     console.log('start');
   } else if (firstChoiceContent === "nothing") {
+// the first card in new pair flipped. Clear last pair's css animation effect, take record of the flipped card.
     lastRoundOne.style.cssText = '';
     lastRoundTwo.style.cssText = '';
     firstChoiceContent = event.target.firstElementChild.className;
     firstChoice = event.target;
     event.target.style.cssText = 'animation-name: flip; animation-duration: 1.5s;';
     console.log('new click');
-  } else if /* if match*/(firstChoiceContent === event.target.firstElementChild.className ) {
+  } else if (firstChoiceContent === event.target.firstElementChild.className ) {
+// matched pair. do css animation, take record of this pairs, and reset firstChoiceContent, and then modify their CSS class.
     event.target.style.cssText = 'animation-name: bubble; animation-duration: 1s; animation-timing-function: ease';
     firstChoice.style.cssText = 'animation-name: bubble; animation-duration: 1s; animation-timing-function: ease';
     lastRoundOne = event.target;
@@ -111,7 +119,8 @@ const compare = function(event){
     successPair++;
     console.log ('good');
     trial = trial + 1;
-  } else  /* unmatch*/ {
+  } else {
+// unmatch pair. Do CSS animation, reset this class list, take record of this pairs.
     firstChoiceContent = "nothing";
     firstChoice.classList.remove('open','show');
     event.target.classList.remove('open', 'show');
@@ -133,10 +142,10 @@ const compare = function(event){
     starOne.classList.value = 'fa fa-star-o';
     stars = 0;
   };
-  // when the game is success; show the winning page.
+// when the game is success; stop the timer. and then show the winning page.
   if (successPair === 8) {
     clearInterval(countTime);
-      congrats.style.cssText = 'transition-property: transform; transition-delay: 1.5s; transform: translate(0px, 0px)';   /*delay 1.5s to let the animation finish*/
+      congrats.style.cssText = 'transition-property: transform; transition-delay: 1.5s; transform: translate(0px, 0px)';   /*delay 1.5s to let the last round animation finish*/
       if (stars > 1) {
       resultMessage.textContent = 'With ' + trial + ' Moves and ' + stars + ' stars.';
     } else{
@@ -145,6 +154,7 @@ const compare = function(event){
   };
 };
 
+// make sure only unflipped cards are flipped
 test.addEventListener('click', function(event){
   if (event.target.className == 'card') {
     toggleCard(event);
