@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let allCards = document.querySelectorAll('.card');
 
 /*
  * Display the cards on the page
@@ -36,8 +36,9 @@ const shuffleCards = function(){
         allCards[i].className = 'card';
         allCards[i].style.cssText = '';
     };
-}
+};
 
+// A timer function that counts time by seconds when a game started, or refreshed.
 let startTime = 'inActive';
 let timeSec = document.querySelector('#clock');
 let timer = function(){
@@ -48,11 +49,9 @@ let timer = function(){
     }
 };
 
+// A function funcRefresh, restart a game when useser clicked refresh button.
 const refresh = document.querySelector('.restart');
-let allCards = document.querySelectorAll('.card');
-
 let moves = document.querySelector('.moves');
-// this is the function to restart a game.
 const funcRefresh = function(event){
     shuffleCards();
 // this is to reset all the indices to the start.
@@ -71,13 +70,12 @@ const funcRefresh = function(event){
     successPair = 0;
 };
 
-refresh.addEventListener ('click', funcRefresh);
 
 
-// firstChoice will be an asigned to the first chosen card when comparing.
-// firstChoiceContent takes record the classList of the first chose card in comparing
-let firstChoiceContent = 'start';
+// Creat a variable, firstChoice, will be an asigned to the first chosen card when comparing.
+// Creat a variable, firstChoiceContent takes record the classList of the first chose card in comparing
 let firstChoice = '';
+let firstChoiceContent = 'start';
 // lastRoundOne will be asigned to the first chosen card in last round comparing. This is used to clear the CSS animation of last round cards.
 // lastRoundTwo will be asigned to the second chosen card in last round comparing. This is used to clear the CSS animation of last round cards.
 let lastRoundOne = document.createElement('div');
@@ -91,7 +89,7 @@ const starOne = document.querySelector('#star1');
 const starTwo = document.querySelector('#star2');
 const starThree = document.querySelector('#star3');
 
-const test = document.querySelector('.deck');
+const cardDeck = document.querySelector('.deck');
 const toggleCard = function (event) {event.target.classList.add('open', 'show')};
 const compare = function(event){
 // the very first card been chosen
@@ -159,8 +157,8 @@ const compare = function(event){
   };
 };
 
-// make sure only unflipped cards are flipped
-test.addEventListener('click', function(event){
+// when userer clicked a card not open or matched, first toggleCard, then compare it.
+cardDeck.addEventListener('click', function(event){
   if (event.target.className == 'card') {
     toggleCard(event);
     compare(event);
@@ -169,7 +167,10 @@ test.addEventListener('click', function(event){
   };
 });
 
+// when user clicked refresh button, restart a game.
+refresh.addEventListener ('click', funcRefresh);
 
+// winning page. if user clicked play again button, move away winning page and restart the game.
 const congrats = document.querySelector('#winningPage');
 const btn = document.querySelector('#newGame');
 const resultMessage = document.querySelector('#result');
