@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Result] (#Result)
+* [Result](#result)
 * [Contributing](#contributing)
 
 ## Instructions
