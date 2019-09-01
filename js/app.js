@@ -99,7 +99,6 @@ const compare = function(event){
     firstChoiceContent = event.target.firstElementChild.className;
     firstChoice = event.target;
     event.target.style.cssText = 'animation-name: flip; animation-duration: 1.5s;';
-    console.log('start');
   } else if (firstChoiceContent === "nothing") {
 // the first card in new pair flipped. Clear last pair's css animation effect, take record of the flipped card.
     lastRoundOne.style.cssText = '';
@@ -107,7 +106,6 @@ const compare = function(event){
     firstChoiceContent = event.target.firstElementChild.className;
     firstChoice = event.target;
     event.target.style.cssText = 'animation-name: flip; animation-duration: 1.5s;';
-    console.log('new click');
   } else if (firstChoiceContent === event.target.firstElementChild.className ) {
 // matched pair. do css animation, take record of this pairs, and reset firstChoiceContent, and then modify their CSS class.
     event.target.style.cssText = 'animation-name: bubble; animation-duration: 1s; animation-timing-function: ease';
@@ -120,7 +118,6 @@ const compare = function(event){
     firstChoice.classList.add('match');
     event.target.classList.add('match');
     successPair++;
-    console.log ('good');
     trial = trial + 1;
   } else {
 // unmatch pair. Do CSS animation, reset this class list, take record of this pairs.
@@ -131,7 +128,6 @@ const compare = function(event){
     firstChoice.style.cssText = 'animation-name: shake; animation-duration: 1.5s;';
     lastRoundOne = event.target;
     lastRoundTwo = firstChoice;
-    console.log ('bad guess');
     trial = trial + 1;
   };
   moves.textContent = trial;
@@ -162,9 +158,7 @@ cardDeck.addEventListener('click', function(event){
   if (event.target.className == 'card') {
     toggleCard(event);
     compare(event);
-  } else {
-    console.log('wrong');
-  };
+  }
 });
 
 // when user clicked refresh button, restart a game.
