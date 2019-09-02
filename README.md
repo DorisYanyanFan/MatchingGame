@@ -3,19 +3,25 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Result](#result)
+* [Modifications](#modifications)
+* [Game Result](#result)
 * [Contributing](#contributing)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This project is a memory game project. To play this game, users flip over two hidden cards at a time to locate the ones that match, and win the game when all cards are matched.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+## Modifications
+- HTML file has been modified
+- CSS file modification: css animation; responsive page.
+- JavaScript file modification: functions are added.
 
 ## Result
-Users will be rewarded by 3 stars if finished within 16 moves, and 2 stars if within 21 moves, 1 star if within 24 moves, otherwise no star will be rewarded.
+Users will be rewarded by:
+ - 3 stars: winning game by 15 moves or less.
+ - 2 stars: winning game by 20 moves or less.
+ - 1 star: winning game by 23 moves or less.
+ - 0 star: winning game by 24 or more moves.
 
 ## Contributing
 
