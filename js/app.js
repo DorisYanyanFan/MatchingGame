@@ -1,7 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
-let allCards = document.querySelectorAll('.card');
+const cardDeck = document.querySelector('.deck');
+let allCards = cardDeck.querySelectorAll('li');
+allCards.forEach(function(card){card.className = 'card'});
 
 /*
  * Display the cards on the page
@@ -89,7 +91,6 @@ const starOne = document.querySelector('#star1');
 const starTwo = document.querySelector('#star2');
 const starThree = document.querySelector('#star3');
 
-const cardDeck = document.querySelector('.deck');
 const toggleCard = function (event) {event.target.classList.add('open', 'show')};
 const compare = function(event){
 // the very first card been chosen
