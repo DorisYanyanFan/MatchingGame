@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Game Play](#game)
 * [Modifications](#modifications)
 * [Game Result](#result)
 * [Contributing](#contributing)
 
-## Instructions
+## Game Play
 
-This project is a memory game project. To play this game, users flip over two hidden cards at a time to locate the ones that match, and win the game when all cards are matched.
+The memory game consists of 8 pairs of cards in a deck. The game begins and the timer starts once the player clicks on the first card. Players flip over two face-down cards at a time to locate the ones that match, and win the game when all cards are matched.
 
-## Modifications
+## Modifications 
 - HTML file has been modified
 - CSS file modification: css animation; responsive page.
 - JavaScript file modification: functions are added.
